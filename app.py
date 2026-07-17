@@ -9,12 +9,17 @@ st.set_page_config(
     layout="centered"
 )
 
-# Inject custom CSS for custom colors and shadow effects
+# Inject custom CSS for dark/black font colors and shadow effects
 st.markdown("""
     <style>
-    /* Main container styling */
-    .reportview-container {
-        background: #f5f7fa;
+    /* Main container background */
+    .stApp {
+        background-color: #f5f7fa;
+    }
+    
+    /* Ensure all default text, labels, and markdown elements are black/dark */
+    .stApp, .stMarkdown, label, p, span, div {
+        color: #1E293B !important;
     }
     
     /* Card / Container styling with elegant shadow */
@@ -35,17 +40,17 @@ st.markdown("""
         padding: 5px;
     }
     
-    /* Title styling */
-    h1 {
-        color: #2C3E50;
+    /* Specific input labels and subheaders color adjustment */
+    h1, h2, h3, label p {
+        color: #0F172A !important;
         font-family: 'Helvetica Neue', Arial, sans-serif;
         font-weight: 700;
     }
     
-    /* Custom Button styling */
+    /* Custom Button styling - keeping text white for contrast on the blue button */
     div.stButton > button:first-child {
         background-color: #4A90E2;
-        color: white;
+        color: white !important;
         border-radius: 8px;
         border: none;
         padding: 10px 24px;
@@ -136,11 +141,11 @@ if st.button("Predict Performance"):
     # Display Result within the shadow card layout
     st.markdown(f"""
         <div class="prediction-card">
-            <h3 style='margin-top:0; color: #2C3E50;'>Predicted Performance Index</h3>
-            <p style='font-size: 32px; font-weight: bold; color: #4A90E2; margin: 0;'>
+            <h3 style='margin-top:0; color: #0F172A !important;'>Predicted Performance Index</h3>
+            <p style='font-size: 32px; font-weight: bold; color: #4A90E2 !important; margin: 0;'>
                 {prediction:.2f}
             </p>
-            <p style='color: #7F8C8D; font-size: 14px; margin-top: 5px;'>
+            <p style='color: #475569 !important; font-size: 14px; margin-top: 5px;'>
                 Based on the provided study habits, sleep schedules, and attendance metrics.
             </p>
         </div>
